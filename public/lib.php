@@ -55,7 +55,7 @@ function updateProfileInfo(){
     $res = $db->query($sql);
     $user = $res->fetch_assoc();
 
-    if (isset($_POST['contact_email']){
+    if (isset($_POST['contact_email'])) {
         $contact_email = $_POST['contact_number'];
         $sql = "UPDATE `graduates`
                 SET `contact_number` = '$contact_email'
@@ -68,7 +68,7 @@ function updateProfileInfo(){
         }
     }
 
-    if (isset($_POST['contact_number']){
+    if (isset($_POST['contact_number'])) {
         $contact_number = $_POST['contact_number'];
         $sql = "UPDATE `graduates`
                 SET `contact_number` = $contact_number
@@ -81,10 +81,10 @@ function updateProfileInfo(){
         }
     }
 
-    if (isset($_POST['contact_email']){
+    if (isset($_POST['contact_email'])) {
         $class_of_degree = $_POST['contact_number'];
         $sql = "UPDATE `graduates`
-                SET `contact_number` = '$class_of_degree'
+                SET `class_of_degree` = '$class_of_degree'
                 WHERE `id` = $user['id']";
         $res = $db->query($sql);
         if ($db->query($sql) === TRUE) {
@@ -93,7 +93,84 @@ function updateProfileInfo(){
             echo "Error updating record: " . $db->error;
         }
     }
-    //$occupation, $company, $country_employed, $company_email, $interest, $social_media
+
+    if (isset($_POST['occupation'])) {
+        $occupation = $_POST['occupation'];
+        $sql = "UPDATE `graduates`
+                SET `occupation` = '$occupation'
+                WHERE `id` = $user['id']";
+        $res = $db->query($sql);
+        if ($db->query($sql) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $db->error;
+        }
+    }
+
+    if (isset($_POST['company'])) {
+        $company = $_POST['company'];
+        $sql = "UPDATE `graduates`
+                SET `company` = '$company'
+                WHERE `id` = $user['id']";
+        $res = $db->query($sql);
+        if ($db->query($sql) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $db->error;
+        }
+    }
+
+    if (isset($_POST['country_employed'])) {
+        $country_employed = $_POST['country_employed'];
+        $sql = "UPDATE `graduates`
+                SET `country_employed` = '$country_employed'
+                WHERE `id` = $user['id']";
+        $res = $db->query($sql);
+        if ($db->query($sql) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $db->error;
+        }
+    }
+
+    if (isset($_POST['company_email'])) {
+        $company_email = $_POST['company_email'];
+        $sql = "UPDATE `graduates`
+                SET `company_email` = '$company_email'
+                WHERE `id` = $user['id']";
+        $res = $db->query($sql);
+        if ($db->query($sql) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $db->error;
+        }
+    }
+
+    if (isset($_POST['interest'])) {
+        $interest = $_POST['interest'];
+        $sql = "UPDATE `graduates`
+                SET `interest` = '$interest'
+                WHERE `id` = $user['id']";
+        $res = $db->query($sql);
+        if ($db->query($sql) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $db->error;
+        }
+    }
+
+    if (isset($_POST['social_media'])) {
+        $social_media = $_POST['social_media'];
+        $sql = "UPDATE `graduates`
+                SET `social_media` = '$social_media'
+                WHERE `id` = $user['id']";
+        $res = $db->query($sql);
+        if ($db->query($sql) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $db->error;
+        }
+    }
 }
 
 function createProfile($first_name, $last_name, $sex, $year_of_graduation, $degree, $contact_number, $contact_email, $class_of_degree, $occupation, $company, $country_employed, $company_email, $interest, $social_media){
