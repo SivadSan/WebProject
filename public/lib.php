@@ -49,11 +49,25 @@ function signUpUser($username, $email, $password){
     }
 }
 
-function updateProfileInfo($db){
+function updateProfileInfo(){
+    global $db;
     $sql = "SELECT `id`, `username` FROM `registration` WHERE `username` = \"{$username}\" AND `password` = \"{$password}\"";
     $res = $db->query($sql);
     $user = $res->fetch_assoc();
-    
+
+    if (isset($_POST['contact_email']){
+        $contact_email = $_POST['contact_number'];
+        $sql = "UPDATE `graduates`
+                SET `contact_number` = '$contact_email'
+                WHERE `id` = $user['id']";
+        $res = $db->query($sql);
+        if ($db->query($sql) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $db->error;
+        }
+    }
+
     if (isset($_POST['contact_number']){
         $contact_number = $_POST['contact_number'];
         $sql = "UPDATE `graduates`
@@ -68,22 +82,9 @@ function updateProfileInfo($db){
     }
 
     if (isset($_POST['contact_email']){
-        $contact_email = $_POST['contact_number'];
-        $sql = "UPDATE `graduates`
-                SET `contact_number` = $contact_email
-                WHERE `id` = $user['id']";
-        $res = $db->query($sql);
-        if ($db->query($sql) === TRUE) {
-            echo "Record updated successfully";
-        } else {
-            echo "Error updating record: " . $db->error;
-        }
-    }
-
-    if (isset($_POST['contact_email']){
         $class_of_degree = $_POST['contact_number'];
         $sql = "UPDATE `graduates`
-                SET `contact_number` = $class_of_degree
+                SET `contact_number` = '$class_of_degree'
                 WHERE `id` = $user['id']";
         $res = $db->query($sql);
         if ($db->query($sql) === TRUE) {

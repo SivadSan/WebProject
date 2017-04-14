@@ -1,13 +1,18 @@
 {
   "name": "generator-jquery-bootstrap-simple",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SivadSan/WebProject.git"
+  },
   "description": "Simple jQuery & Bootstrap generator ready to develop/test js/html code.",
   "main": "",
   "author": "Julian Sadowski",
   "license": "ISC",
   "devDependencies": {
     "bower": "^1.7.2",
-    "grunt": "~0.4.5",
+    "graceful-fs": "^3.0.0",
+    "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.7.0",
     "grunt-contrib-compass": "^1.0.4",
@@ -18,6 +23,7 @@
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-watch": "^0.6.1",
     "jit-grunt": "^0.9.1",
+    "minimatch": "^3.0.2",
     "time-grunt": "^1.3.0"
   }
 }
