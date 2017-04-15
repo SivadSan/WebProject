@@ -1,1 +1,1 @@
-web: public/index.hml web/
+web: public/index.html
