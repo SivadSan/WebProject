@@ -23,7 +23,11 @@ CREATE DATABASE IF NOT EXISTS `uwialumni` DEFAULT CHARACTER SET latin1 COLLATE l
 USE `uwialumni`;
 
 -- --------------------------------------------------------
-
+---
+--- Create Database User
+---
+-GRANT USAGE ON *.* TO 'uwialumni'@'localhost' IDENTIFIED BY PASSWORD '*5ED3C55C40CCBCA982F2F18C231588FA8CA5517C';
+-GRANT ALL PRIVILEGES ON `uwialumni`.* TO 'uwialumni'@'localhost';
 --
 -- Table structure for table `graduates`
 --
