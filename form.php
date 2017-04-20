@@ -38,6 +38,7 @@
 		add($conn,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media);
   	}
     ?>
+
     <form class="form-horizontal" method="POST" action="form.php">
         <!-- Form Name -->
         <legend>Profile Information</legend>
@@ -191,3 +192,40 @@
         </form>
 </body>
 </html>
+  
+<?php
+    $host = "localhost";
+    $username = "uwialumni";
+    $password = "uwialumni";
+    $database = "uwialumni";
+    $conn = new mysqli($host,$username,$password,$database);
+    
+    // function add($db,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media){	
+  	// $sql = "INSERT INTO graduates(id,first_name,last_name,contact_number,contact_email,country_of_birth,year_of_graduation,degree,class_of_degree,occupation,company,country_employed,company_email,interest,social_media) VALUES (NULL,'$first_name','$last_name','$sex','$contact_number','$contact_email','$country_of_birth','$year_of_graduation','$degree','$class_of_degree','$occupation','$company','$country_employed','$company_email','$interest','$social_media')";
+	//   $db->query($sql);
+    //   }
+     function add($db,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media){
+     $sql = "INSERT INTO graduates(`first_name`,`last_name`,`sex`,`contact_number`,`contact_email`,`country_of_birth`,`year_of_graduation`,`degree`,`class_of_degree`,`occupation`,`company`,`country_employed`,`company_email`,`interest`,`social_media`) VALUES ('$first_name','$last_name','$sex','$contact_number','$contact_email','$country_of_birth','$year_of_graduation','$degree','$class_of_degree','$occupation','$company','$country_employed','$company_email','$interest','$social_media')";
+     $db->query($sql);
+      }
+
+    if ($_POST) {
+		$first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $sex = $_POST['sex'];
+        $contact_number = $_POST['contact_number'];
+        $contact_email = $_POST['contact_email'];
+        $country_of_birth = $_POST['country_of_birth'];
+        $year_of_graduation = $_POST['year_of_graduation'];
+        $degree = $_POST['degree'];
+        $class_of_degree = $_POST['class_of_degree'];
+        $occupation = $_POST['occupation'];
+        $company = $_POST['company']; 
+        $country_employed = $_POST['country_employed'];
+        $company_email = $_POST['company_email'];
+        $interest = $_POST['interest']; 
+        $social_media = $_POST['social_media']; 	 		 	
+		// add($conn,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media);
+        add($conn,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media);
+  	}
+    ?>
