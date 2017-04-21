@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-      <meta charset="utf-8">
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Alumni Tracker - Login</title>
+    <title>Download CSV</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,30 +29,11 @@
     <![endif]-->
 
 </head>
-<?php
-    $host = "localhost";
-    $username = "uwialumni";
-    $password = "uwialumni";
-    $database = "uwialumni";
-    $conn = new mysqli($host,$username,$password,$database);
-    
-    function add($db,$username,$email,$password){	
-    $password=sha1($password);
-  	$query = "INSERT INTO registration(id,username,email,password) VALUES (NULL,'$username','$email','$password')";
-	  $db->query($query);
-      }
 
-    if ($_POST) {
-		$username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $password = sha1($password);
-		add($conn,$username,$email,$password);
-  	}
-    ?>
 <body>
+
     <div class="brand">DCIT Alumni Tracker</div>
-       <!--<div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>-->
+    <!--<div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>-->
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -69,7 +52,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                       <li>
+                    <li>
                         <a href="index.php">Home</a>
                     </li>
                     <li>
@@ -88,80 +71,28 @@
                         <a href="contact.php">Contact</a>
                     </li>
   <div class="botton-social-group">
-  <li><a href="https://twitter.com/"><img src="img/twitter.png" alt="Twitter Image" style="width:20px;height:20px;"></a>
-	  <a href="https://instagram.com/"><img src="img/instagram.png" alt="Instagram Image" style="width:20px;height:20px;"/></a>
-	  <a href="https://facebook.com/"><img src="img/facebook.png" alt="Facebook Image" style="width:20px;height:20px;"/> </a>
-      <a href="contact.php"><img src="img/whatsapp.png" alt="WhatsApp Image" style="width:22px;height:22px;"/> </a>
-      <a href="contact.php"><img src="img/gmail.png" alt="Gmail Image" style="width:22px;height:22px;"/></a>
+  <li><a href="https://twitter.com/"><img src="img/tweet.png" alt="Twitter Image" style="width:20px;height:20px;" title="Share on Twitter"></a>
+	  <a href="https://instagram.com/"><img src="img/instagram.png" alt="Instagram Image" style="width:20px;height:20px;" title="Share on Instagram"/></a>
+	  <a href="https://facebook.com/"><img src="img/facebook.png" alt="Facebook Image" style="width:20px;height:20px;" title="Share on FaceBook"/> </a>
+	  <a href="contact.php"><img src="img/whatsapp.png" alt="WhatsApp Image" style="width:22px;height:22px;" title="Join us on Whatsapp"/> </a>
+      <a href="contact.php"><img src="img/gmail.png" alt="Gmail Image" style="width:22px;height:22px;" title="Email us"/></a>
 </li>
   </div>
-                </ul>
+  </ul>
+</div>
             </div>
             <!-- /.navbar-collapse -->
-        </div>
         <!-- /.container -->
     </nav>
 
     <div class="container">
 
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Alumni Tracker
-                        <strong>Registration</strong>
+                    <h2 class="brand-before">
+                         <a href='csv.php?download=true'>Download CSV Here!</a>
                     </h2>
-                    <hr>
-                </div>
-                <div class="col-lg-12 text-center">
-    
-    <form class="form-horizontal" method="POST" action="">
-            <fieldset>
-        
-        <!-- Form Name -->
-       <legend>Registration Form</legend>
-
-        <!-- Text input username-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="username">Username</label>  
-        <div class="col-md-4">
-        <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-       <!-- Email input contact email-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="email">Email</label>  
-        <div class="col-md-4">
-        <input id="email" name="email" type="email" placeholder="Email" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-        <!-- Text input username-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="password">Password</label>  
-        <div class="col-md-4">
-        <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-         <!-- Button -->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="saveBtn"></label>
-        <div class="col-md-4">
-            <button id="saveBtn" name="saveBtn" type="submit"class="btn btn-primary">Save</button>
-        </div>
-        </div>
-
-          </fieldset>
-    </form>
                 </div>
             </div>
         </div>
-
     </div>
     <!-- /.container -->
 
@@ -180,5 +111,14 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 4000 //changes the speed
+    })
+    </script>
+
 </body>
+
 </html>
