@@ -1,16 +1,15 @@
 <?php
 
-session_start();
-$url = parse_url(getenv("mysql://b9263f30da3f99:329c1f68@us-cdbr-iron-east-03.cleardb.net/heroku_fcaf6adad60f62d?reconnect=true"));
+// $url = parse_url(getenv("mysql://b9263f30da3f99:329c1f68@us-cdbr-iron-east-03.cleardb.net/heroku_fcaf6adad60f62d?reconnect=true"));
 
-$server = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$db = substr($url["path"], 1);
+// $server = $url["host"];
+// $username = $url["user"];
+// $password = $url["pass"];
+// $db = substr($url["path"], 1);
 
-$conn = new mysqli($server, $username, $password, $db);
+//$conn = new mysqli($server, $username, $password, $db);
 
-//$conn = new mysqli("localhost", "uwialumni", "kylehavemercy", "uwialumni");
+$conn = new mysqli("localhost", "uwialumni", "uwialumni", "uwialumni");
 
 // function createUser($username, $email, $password){
 //     global $conn;

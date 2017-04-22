@@ -2,31 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<?php
-    $host = "localhost";
-    $username = "uwialumni";
-    $password = "uwialumni";
-    $database = "uwialumni";
-    $conn = new mysqli($host,$username,$password,$database);
-    
-    function add($db,$username,$email,$password){	
-    $password=sha1($password);
-  	$query = "INSERT INTO registration(id,username,email,password) VALUES (NULL,'$username','$email','$password')";
-	  $db->query($query);
-      }
+    <title>Registration Page</title>
 
-    if ($_POST) {
-		$username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-		add($conn,$username,$email,$password);
-  	}
-    ?>
+	<link href="public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">	
+
+</head>
 <body>
     
-    <form class="form-horizontal" method="POST" action="">
+    <form class="form-horizontal" method="POST" action="index.php/registrationAction">
         
         <!-- Form Name -->
         <legend>Registration</legend>
@@ -53,7 +37,7 @@
         <div class="form-group">
         <label class="col-md-4 control-label" for="password">Password</label>  
         <div class="col-md-4">
-        <input id="password" name="password" type="text" placeholder="Password" class="form-control input-md" required="">
+        <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
             
         </div>
         </div>
@@ -62,11 +46,27 @@
         <div class="form-group">
         <label class="col-md-4 control-label" for="saveBtn"></label>
         <div class="col-md-4">
-            <button id="saveBtn" name="saveBtn" type="submit"class="btn btn-primary">Save</button>
+            <button id="saveBtn" name="saveBtn" type="submit"class="btn btn-primary">Register</button>
         </div>
         </div>
+
+        <!--<?php
+        function add($username,$email,$password){
+			global $conn;
+        	$password=sha1($password);
+  	    	$query = "INSERT INTO registration(`id`,`username`,`email`,`password`) VALUES (NULL,'$username','$email','$password')";
+	    	$conn->query($query);
+		}
+
+        if($_POST){
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $password = sha1($password);
+            add($username, $email, $password);
+        }
+        ?>-->
+
 </body>
 </html>
-
-
-
