@@ -1,5 +1,5 @@
 <?php
-// output headers so that the file is downloaded rather than displayed
+function csv(){
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=data.csv');
 
@@ -7,11 +7,16 @@ header('Content-Disposition: attachment; filename=data.csv');
 $output = fopen('php://output', 'w');
 
 // output the column headings
-fputcsv($output, array('Column 1', 'Column 2', 'Column 3'));
+fputcsv($output, array('Id', 'First Name', 'Last Name','Sex', 'Country of Birth', 'Contact Number', 'Email', 'Year Graduated', 'Degree','Class of Degree', 'Occupation', 'Company', 'Country Employed', 'Company Email', 'Interest', 'Scoail Media'));
 
 // fetch the data
-$db = new mysqli('localhost', 'username', 'password', 'database');
-$rows = $db->query('SELECT field1,field2,field3 FROM table');
+$db = new mysqli('localhost', 'uwialumni', 'uwialumni', 'uwialumni');
+$rows = $db->query('SELECT * FROM graduates');
 
 // loop over the rows, outputting them
 while ($row = $rows->fetch_assoc()) fputcsv($output, $row);
+}
+ if (isset($_GET['download'])) {
+    csv();
+  }
+?>

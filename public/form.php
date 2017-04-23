@@ -169,7 +169,7 @@
     $database = "uwialumni";
     $conn = new mysqli($host,$username,$password,$database);
     
-     function add($db,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media){
+     function proInfo($db,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media){
      $sql = "INSERT INTO graduates(`first_name`,`last_name`,`sex`,`contact_number`,`contact_email`,`country_of_birth`,`year_of_graduation`,`degree`,`class_of_degree`,`occupation`,`company`,`country_employed`,`company_email`,`interest`,`social_media`) VALUES ('$first_name','$last_name','$sex','$contact_number','$contact_email','$country_of_birth','$year_of_graduation','$degree','$class_of_degree','$occupation','$company','$country_employed','$company_email','$interest','$social_media')";
      $db->query($sql);
       }
@@ -191,7 +191,7 @@
         $interest = $_POST['interest']; 
         $social_media = $_POST['social_media']; 	 		 	
 		
-        add($conn,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media);
+        proInfo($conn,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media);
   	}
     ?>
 </body>
