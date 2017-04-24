@@ -1,5 +1,4 @@
 <?php
-session_start();
 include 'lib.php';
 
 if (isset($_SESSION['userSession'])!="") {

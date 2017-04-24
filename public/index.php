@@ -32,7 +32,7 @@ $app->get('/hello/{name}', function (Request $request, Response $response){
 
     return $response;
 });
-
+	
 $app->post('/register', function (Request $request, Response $response) {
 	
 	global $url;
@@ -45,13 +45,7 @@ $app->post('/register', function (Request $request, Response $response) {
 	$password = sha1($password);
 	
 	$userRecord = regInfo($username,$email,$password);
-
-	if ($userRecord['status'] == 'error'){
-		return $response->withStatus(201);
-	}
-	else {
-		return $response->withStatus(200);
-	}
+	$response->getBody()->write(json_encode($userRecord));
 });
 
 $app->post('/login', function (Request $request, Response $response) {
@@ -64,7 +58,7 @@ $app->post('/login', function (Request $request, Response $response) {
 	$password = sha1($password);
 
 	$userRecord = loginUser($username, $password);
-    return empty($userRecord) ? $response->withStatus(403) : $response->withStatus(200);
+    $response->getBody()->write(json_encode($userRecord));
 
 });
 

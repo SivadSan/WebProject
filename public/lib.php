@@ -1,6 +1,6 @@
 <?php
 
-    //session_start();
+    session_start();
     
 	$host = "localhost";
 	$user = "uwialumni";
@@ -26,25 +26,30 @@
             return ($msg);
         }
         else{
-            $msg = array("status" => "error", "message" => "Unable to register");
+            $msg = array("status" => "error", "message" => "Unable to register. ".$dbCon->error);
             return ($msg);
         }
 
     }
 
-function loginUser($username, $password){
-    global $dbCon;
-    $password = sha1($password);
-    $sql = "SELECT `id`, `username` FROM `user` WHERE `username` = \"{$username}\" AND `password` = \"{$password}\"";
-    $res = $dbCon->query($sql);
-    if($res->num_rows == 0){
-        return json_encode(array("status"=>"failure"));
-    }else{
-        $user = $res->fetch_assoc();
-        $_SESSION["userSession"] = array(
-            "userid"=> $user['id'],
-            "username"=> $user['username']
-        );
-        return json_encode(array("status"=>"success", "userid"=> $user['id']));
+    function loginUser($username, $password){
+
+        global $dbCon;
+        $password = sha1($password);
+        $sql = "SELECT `id`, `username` FROM `user` WHERE `username` = \"{$username}\" AND `password` = \"{$password}\"";
+        $res = $dbCon->query($sql);
+        $row = $res->num_rows;
+
+        if($row == 0){
+            $msg = array("status"=>"failure");
+            return ($msg);
+        }else{
+            $user = $res->fetch_assoc();
+            $_SESSION["userSession"] = array(
+                "userid"=> $user['id'],
+                "username"=> $user['username']
+            );
+            $msg = (array("status"=>"success", "userid"=> $user['id']));
+            return ($msg);
+        }
     }
-}
