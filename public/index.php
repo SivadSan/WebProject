@@ -16,6 +16,7 @@ $configuration = [
 
 
 $url = "http://localhost:8080/WebProject/public";
+// $url = "https://student-alumni-app.herokuapp.com";
 $container = new Container($configuration);
 $app = new App($container);
 
@@ -35,24 +36,35 @@ $app->get('/hello/{name}', function (Request $request, Response $response){
 $app->post('/register', function (Request $request, Response $response) {
 	
 	global $url;
+	$userRecord;
+
 	$post = $request->getParsedBody();
 	$username = $post['username'];
 	$email = $post['email'];
 	$password = $post['password'];
+	$password = sha1($password);
 	
-	regInfo($username,$email,$password);
-	return $response->withRedirect($url."/login.php");
+	$userRecord = regInfo($username,$email,$password);
+
+	if ($userRecord['status'] == 'error'){
+		return $response->withStatus(201);
+	}
+	else {
+		return $response->withStatus(200);
+	}
 });
 
 $app->post('/login', function (Request $request, Response $response) {
 
 	global $url;
+	$userRecord;
+
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	$password = sha1($password);
 
-	echo loginUser($username, $password);
-	return $response->withRedirect($url."/home.php");
+	$userRecord = loginUser($username, $password);
+    return empty($userRecord) ? $response->withStatus(403) : $response->withStatus(200);
 
 });
 

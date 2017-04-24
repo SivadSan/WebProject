@@ -2,10 +2,10 @@
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 19, 2017 at 12:18 AM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 24, 2017 at 06:12 AM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 7.0.15
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -16,6 +16,8 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+GRANT USAGE ON *.* TO 'uwialumni'@'localhost' IDENTIFIED BY PASSWORD '*D91D51D87C4CFF9780FAA512FCD14295F44C0494';
+GRANT ALL PRIVILEGES ON `uwialumni`.* TO 'uwialumni'@'localhost' WITH GRANT OPTION;
 --
 -- Database: `uwialumni`
 --
@@ -25,13 +27,14 @@ USE `uwialumni`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admins`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `admins` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(20) NOT NULL,
+  `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -54,7 +57,7 @@ CREATE TABLE `graduates` (
   `company` varchar(50) NOT NULL,
   `country_employed` varchar(30) NOT NULL,
   `company_email` varchar(40) NOT NULL,
-  `interest` varchar(255) NOT NULL,
+  `interest` text NOT NULL,
   `social_media` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -72,6 +75,14 @@ CREATE TABLE `registration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`id`, `username`, `email`, `password`) VALUES
+(16, '', 'sivad@gmail.com', '022572468000c259a809'),
+(19, '', 'davis@gmail.com', 'dd25e57da13e668076f9');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -79,19 +90,22 @@ CREATE TABLE `registration` (
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `graduates`
 --
 ALTER TABLE `graduates`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `contact_email` (`contact_email`,`company_email`);
 
 --
 -- Indexes for table `registration`
 --
 ALTER TABLE `registration`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -111,7 +125,7 @@ ALTER TABLE `graduates`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

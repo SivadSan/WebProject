@@ -1,7 +1,7 @@
 $(document).ready(function(){
     const url = "http://localhost:8080/WebProject/public";
 
-    $("#signupBtn").click(function(){
+    $("#registerBtn").click(function(){
 
         var data = {
             username: $("#username").val(),
@@ -34,7 +34,7 @@ $(document).ready(function(){
         $.post(url+'/index.php/login', data, function(response) {
             response = JSON.parse(response);
             if(response.status == "success"){
-                window.location.href = "http://localhost:8080/Lab7/todo.php";
+                window.location.href = url;
             }else{
                 alert("Invalid Login");
             }

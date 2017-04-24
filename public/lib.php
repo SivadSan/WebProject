@@ -1,6 +1,6 @@
 <?php
 
-    session_start();
+    //session_start();
     
 	$host = "localhost";
 	$user = "uwialumni";
@@ -19,24 +19,18 @@
         $password=sha1($password);
         $query = "INSERT INTO registration(username,email,password) VALUES ('$username','$email','$password')";
         $dbCon->query($query);
+        $id = $dbCon->insert_id;
+
+        if ($id > 0){
+            $msg = array("status" => "success", "userid" => $id);
+            return ($msg);
+        }
+        else{
+            $msg = array("status" => "error", "message" => "Unable to register");
+            return ($msg);
+        }
 
     }
-
-    function createUser($username, $email, $password){
-    global $dbCon;
-    $password = sha1($password);
-    $insql = "INSERT INTO user(`username`, `email`, `password`) values ('$username', '$email', '$password')";
-
-    $dbCon->query($insql);
-    $val = $dbCon->insert_id;
-
-    $_SESSION["userData"] = array(
-        "userid"=>$val,
-        "username"=>$username
-    );
-    $dbCon->close();
-    return $val;
-}
 
 function loginUser($username, $password){
     global $dbCon;
@@ -52,18 +46,5 @@ function loginUser($username, $password){
             "username"=> $user['username']
         );
         return json_encode(array("status"=>"success", "userid"=> $user['id']));
-    }
-
-}
-
-function signUpUser($username, $email, $password){
-    $res = createUser($username, $email, $password);
-
-    if ($res > 0){
-        $msg = array("status"=>"success", 'userid'=>$res);
-        return json_encode($msg);
-    }else{
-        $arr = array("status"=>"error", "message"=>"Unable to create a new user");
-        return  json_encode($arr);
     }
 }
