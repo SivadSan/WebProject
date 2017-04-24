@@ -1,4 +1,4 @@
-<?php include 'lib.php' ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">

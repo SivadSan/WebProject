@@ -1,8 +1,9 @@
 <?php
-include 'lib.php';
-    if (!isset($_SESSION['userSession'])) {
-        header("Location: login.php");
+session_start();
+    if (($_SESSION['userSession']['username'] == 'thayne')) {
+        header("Location: session.php");
     }
+    else header("Location: login.php");
 ?>
 
 <!DOCTYPE html>

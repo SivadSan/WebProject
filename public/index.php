@@ -42,7 +42,7 @@ $app->post('/register', function (Request $request, Response $response) {
 	$username = $post['username'];
 	$email = $post['email'];
 	$password = $post['password'];
-	$password = sha1($password);
+	//$password = sha1($password);
 	
 	$userRecord = regInfo($username,$email,$password);
 	$response->getBody()->write(json_encode($userRecord));
@@ -55,10 +55,17 @@ $app->post('/login', function (Request $request, Response $response) {
 
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$password = sha1($password);
+	//$password = sha1($password);
 
 	$userRecord = loginUser($username, $password);
     $response->getBody()->write(json_encode($userRecord));
+	// if ($userRecord['status'] == 'error'){
+	// 	return $response->getBody()->write(json_encode($userRecord));
+	// }
+	// else {
+	// 	$response->getBody()->write(json_encode($userRecord));
+	// 	return $response->withRedirect($url."/home.php");
+	// }
 
 });
 

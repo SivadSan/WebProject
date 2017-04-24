@@ -1,5 +1,4 @@
 <?php
-
     session_start();
     
 	$host = "localhost";
@@ -17,6 +16,7 @@
         
         global $dbCon;
         $password=sha1($password);
+
         $query = "INSERT INTO registration(username,email,password) VALUES ('$username','$email','$password')";
         $dbCon->query($query);
         $id = $dbCon->insert_id;
@@ -36,7 +36,8 @@
 
         global $dbCon;
         $password = sha1($password);
-        $sql = "SELECT `id`, `username` FROM `user` WHERE `username` = \"{$username}\" AND `password` = \"{$password}\"";
+
+        $sql = "SELECT `id`, `username` FROM `registration` WHERE `username` = \"{$username}\" AND `password` = \"{$password}\"";
         $res = $dbCon->query($sql);
         $row = $res->num_rows;
 
@@ -49,7 +50,7 @@
                 "userid"=> $user['id'],
                 "username"=> $user['username']
             );
-            $msg = (array("status"=>"success", "userid"=> $user['id']));
+            $msg = array("status"=>"success", "userid"=> $user['id']);
             return ($msg);
         }
     }
