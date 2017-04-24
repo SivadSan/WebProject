@@ -21,28 +21,30 @@
     display($all);
     
     function display($student){
-        echo"<table border='1'>
-        <thead>
-        <tr><th>Year</th>
-        <th>Graduate</th>
-        </tr>
-        </thead>
-        <tbody>";
+        
         $prev=0;
         foreach($student as $key=>$c){
-        echo "<tr>";
+       
         if($c['year_of_graduation']==$prev){
-            echo "<td>"."</td>";
+             echo  "<li>".  $c['first_name']." ". $c['last_name']. "</li>";
         }else{
-        echo "<td>". $c['year_of_graduation']. "</td>";
+            echo $c['year_of_graduation'];
+            echo "<li>". $c['first_name']." ". $c['last_name']."</li>";
         }
-        echo "<td>". $c['first_name']." ". $c['last_name']."</td>";
-        echo "</tr>";
+       
         $prev=$c['year_of_graduation'];
 	}
-	echo "</table>";
+    
     }
     
 ?>
 
-</body>
+<style >
+    li {
+        list-style-type: none;
+        background:white;
+        margin-left: 20px;
+        padding:2px
+
+    }
+    </style>
