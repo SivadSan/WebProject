@@ -81,7 +81,7 @@
                 ?>
                 <?php
                 if (isset($_SESSION['userSession']) && ($_SESSION['userSession']['usertype']) === "admin"){
-                    echo"<li><a href='management.php'></a></li>";
+                    echo"<li><a href='management.php'>Management</a></li>";
                 }
                 ?>
   <div class="botton-social-group">
@@ -168,13 +168,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 4000 //changes the speed
-    })
-    </script>
 
 </body>
 

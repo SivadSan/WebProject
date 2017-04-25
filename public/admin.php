@@ -1,7 +1,5 @@
 <?php
 include 'lib.php';
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -177,5 +175,6 @@ if ($_POST){
 
     if($password === 'Admin'){
         loginAdmin($username,$password);
+        header("Location: home.php");
     }
 }

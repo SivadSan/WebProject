@@ -278,6 +278,7 @@ session_start();
         $social_media = $_POST['social_media']; 	 		 	
 		// add($conn,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media);
         add($conn,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media);
+        //header("Location: home.php");
   	}
     ?>
             </div>
@@ -306,33 +307,3 @@ session_start();
 
 </body>
 </html>
-
-<?php
-     function add($dbCon,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media){
-     $sql = "INSERT INTO graduates(`first_name`,`last_name`,`sex`,`contact_number`,`contact_email`,`country_of_birth`,`year_of_graduation`,`degree`,`class_of_degree`,`occupation`,`company`,`country_employed`,`company_email`,`interest`,`social_media`) VALUES ('$first_name','$last_name','$sex','$contact_number','$contact_email','$country_of_birth','$year_of_graduation','$degree','$class_of_degree','$occupation','$company','$country_employed','$company_email','$interest','$social_media')";
-     $dbCon->query($sql);
-    }
-
-    if ($_POST) {
-		$first_name = $_POST['first_name'];
-        $last_name = $_POST['last_name'];
-        $sex = $_POST['sex'];
-        $contact_number = $_POST['contact_number'];
-        $contact_email = $_POST['contact_email'];
-        $country_of_birth = $_POST['country_of_birth'];
-        $year_of_graduation = $_POST['year_of_graduation'];
-        $degree = $_POST['degree'];
-        $class_of_degree = $_POST['class_of_degree'];
-        $occupation = $_POST['occupation'];
-        $company = $_POST['company']; 
-        $country_employed = $_POST['country_employed'];
-        $company_email = $_POST['company_email'];
-        $interest = $_POST['interest']; 
-        $social_media = $_POST['social_media'];
-
-        global $dbCon;
-        add($dbCon,$first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media);
-        header("Location: home.php");
-  	}
-    
-?>
