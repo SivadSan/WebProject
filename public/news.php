@@ -1,10 +1,4 @@
-<?php
-session_start();
-    if (($_SESSION['userSession']['username'] == 'thayne')) {
-        header("Location: session.php");
-    }
-    else header("Location: login.php");
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,8 +35,7 @@ session_start();
 <body>
 
     <div class="brand">DCIT Alumni Tracker</div>
-       <!--<div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>-->
-
+    
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -60,42 +53,40 @@ session_start();
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+
                     <li>
                         <a href="home.php">Home</a>
                     </li>
                     <li>
                         <a href="about.php">About</a>
                     </li>
-                    <li>
-                        <a href="register.php">Register</a>
-                    </li>
-                    <li>
-                        <a href="login.php">Login</a>
-                    </li>
+                    <?php
+                        if (!isset($_SESSION['userSession'])){
+                        echo"<li><a href='register.php'>Register</a></li>";
+                        echo"<li><a href='login.php'>Login</a></li>";
+                    }
+                    ?>
                     <li>
                         <a href="news.php">News</a>
                     </li>
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
-            <div class="botton-social-group">
-            <li>
-                <a href="https://twitter.com/"><img src="img/tweet.png" alt="Twitter Image" style="width:20px;height:20px;" title="Share on Twitter"></a>
-                <a href="https://instagram.com/"><img src="img/instagram.png" alt="Instagram Image" style="width:20px;height:20px;" title="Share on Instagram"/></a>
-	            <a href="https://facebook.com/"><img src="img/facebook.png" alt="Facebook Image" style="width:20px;height:20px;" title="Share on FaceBook"/> </a>
-	            <a href="contact.php"><img src="img/whatsapp.png" alt="WhatsApp Image" style="width:22px;height:22px;" title="Join us on Whatsapp"/> </a>
-                <a href="contact.php"><img src="img/gmail.png" alt="Gmail Image" style="width:22px;height:22px;" title="Email us"/></a>
-            </li>
-            </div>
-            <!--<div>
-                </ul>
                 <?php
-                echo '<ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp; <?php echo $_SESSION["userData"]["username"]; ?></a></li>
-                        <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a></li>
-                    </ul>'
+                if (isset($_SESSION['userSession']) && ($_SESSION['userSession']) != ""){
+                    echo"<li><a href='profile.php'><span class='glyphicon glyphicon-user'></span>&nbsp;" . $_SESSION['userSession']['username'] . "</a></li>";
+                    echo"<li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span>&nbsp; Logout</a></li>";
+                }
                 ?>
-            </div>-->
+  <div class="botton-social-group">
+ <li><a href="https://twitter.com/"><img src="img/tweet.png" alt="Twitter Image" style="width:20px;height:20px;" title="Share on Twitter"></a>
+	  <a href="https://instagram.com/"><img src="img/instagram.png" alt="Instagram Image" style="width:20px;height:20px;" title="Share on Instagram"/></a>
+	  <a href="https://facebook.com/"><img src="img/facebook.png" alt="Facebook Image" style="width:20px;height:20px;" title="Share on FaceBook"/> </a>
+	  <a href="contact.php"><img src="img/whatsapp.png" alt="WhatsApp Image" style="width:22px;height:22px;" title="Join us on Whatsapp"/> </a>
+      <a href="contact.php"><img src="img/gmail.png" alt="Gmail Image" style="width:22px;height:22px;" title="Email us"/></a>
+</li>
+  </div>
+                </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -114,38 +105,32 @@ session_start();
                     <hr>
                 </div>
                 <div class="col-lg-12 text-center">
-                <h2>Post Title
-                        <small> - 21st April, 2017</small>
-                    </h2>
+                <h2>Employment opportunity</h2>
                     </div>
                     <div class="col-md-6">
-                    <img class="img-responsive img-border-left" src="img/10.png" alt="" style="width:100%;height:300px;">
+                    <img class="img-responsive img-border-left" src="img/news1.png" alt="" style="width:100%;height:300px;">
                 </div>
                 <div class="col-md-6">
-                    <p>Alumni Tracker is a Web Application created for the Department of Computing and I.T of the University of the West
-                    Indies, St Augustine Campus.</p>
-                    <p>The purpose of this Web App is to connect the department to a network of skilled local professionals to 
-                    help accomplish the many roles and responsibilities that exist within the department.</p>
-                    <p>It was developed by five students from the Web Systems & Technology class (Semester II 2016-1017) as a part of our course work assessment.</p>
-                    <a href="#" class="btn btn-default btn-lg">Read More</a>
+                 <p>Unemployed?</p>
+                    <p>Interest in Web Development?</p>
+                    <p>An opporunity awaits you here</p>
+                    <a href="news1.php" class="btn btn-default btn-lg">Read More</a>
                     </div>
-                
                     
                    <div class="col-lg-12 text-center">
-                <h2>Post Title
-                        <small> - 7th April, 2017</small>
-                    </h2>
+                <h2>Inaugural Lecture </h2>
                     </div>
                     <div class="col-md-6">
-                    <img class="img-responsive img-border-left" src="img/10.png" alt="" style="width:100%;height:300px;">
+                    <img class="img-responsive img-border-left" src="img/news2.png" alt="" style="width:100%;height:300px;">
                 </div>
                 <div class="col-md-6">
-                    <p>Alumni Tracker is a Web Application created for the Department of Computing and I.T of the University of the West
-                    Indies, St Augustine Campus.</p>
-                    <p>The purpose of this Web App is to connect the department to a network of skilled local professionals to 
-                    help accomplish the many roles and responsibilities that exist within the department.</p>
-                    <p>It was developed by five students from the Web Systems & Technology class (Semester II 2016-1017) as a part of our course work assessment.</p>
-                    <a href="#" class="btn btn-default btn-lg">Read More</a>
+                <p> </p>
+                    <p>EVENT DATE(S): 13/04/2017</p>
+                    <p>LOCATION: UWI ST. AUGUSTINE, ENGINEERING LECTURE THEATRE, ROOM 101</p>
+                    <p>ADMISSION:FREE</p>
+                    <p>OPEN TO: | GENERAL PUBLIC | STAFF | STUDENT | ALUMNI |</p>
+            
+                    <a href="news2.php" class="btn btn-default btn-lg">Read More</a>
                     </div>
                 <div class="col-lg-12 text-center">
                     <ul class="pager">

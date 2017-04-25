@@ -37,6 +37,9 @@ CREATE TABLE `admin` (
   `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+INSERT INTO `admin` (`id`, `username`, `password`, `email`) VALUES (NULL, 'Admin', 'Admin', 'alumniadmin@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -75,17 +78,7 @@ CREATE TABLE `registration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `registration`
 --
-
-INSERT INTO `registration` (`id`, `username`, `email`, `password`) VALUES
-(16, '', 'sivad@gmail.com', '022572468000c259a809'),
-(19, '', 'davis@gmail.com', 'dd25e57da13e668076f9');
-
---
--- Indexes for dumped tables
---
-
 --
 -- Indexes for table `admin`
 --

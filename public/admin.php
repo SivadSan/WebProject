@@ -1,10 +1,14 @@
 <?php
-    session_start();
+include 'lib.php';
+}
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +19,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="css/business-casual.css" rel="stylesheet">
 
@@ -30,7 +35,9 @@
     <![endif]-->
 
 </head>
+
 <body>
+
     <div class="brand">DCIT Alumni Tracker</div>
        <!--<div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>-->
 
@@ -58,7 +65,7 @@
                     <li>
                         <a href="about.php">About</a>
                     </li>
-                     <?php
+                    <?php
                         if (!isset($_SESSION['userSession'])){
                         echo"<li><a href='register.php'>Register</a></li>";
                         echo"<li><a href='login.php'>Login</a></li>";
@@ -98,54 +105,43 @@
                 <div class="col-lg-12">
                     <hr>
                     <h2 class="intro-text text-center">Alumni Tracker
-                        <strong>Registration</strong>
+                        <strong>Login</strong>
                     </h2>
                     <hr>
                 </div>
                 <div class="col-lg-12 text-center">
-    
-    <form class="form-horizontal" method="POST" action="index.php/register">
-            <fieldset>
-        
+    <form class="form-horizontal" method = "POST"; action="admin.php">
+        <fieldset>
+
         <!-- Form Name -->
-        <legend>Registration Form</legend>
+        <legend>Login Form</legend>
 
-        <!-- Text input username-->
+        <!-- Text input-->
         <div class="form-group">
-        <label class="col-md-4 control-label" for="username">Username</label>  
+        <label class="col-md-4 control-label" for="code">Username</label>  
         <div class="col-md-4">
-        <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" required="">
+        <input id="username" name="username" type="text" placeholder="username" class="form-control input-md" required="">
+            
+        </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+        <label class="col-md-4 control-label" for="code">Password</label>  
+        <div class="col-md-4">
+        <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="">
             
         </div>
         </div>
 
-       <!-- Email input contact email-->
+        <!-- Button -->
         <div class="form-group">
-        <label class="col-md-4 control-label" for="email">Email</label>  
+        <label class="col-md-4 control-label" for="loginBtn"></label>
         <div class="col-md-4">
-        <input id="email" name="email" type="email" placeholder="Email" class="form-control input-md" required="">
-            
+        <button id="loginBtn" name="loginBtn" class="btn btn-primary">Login</button>
         </div>
         </div>
 
-        <!-- Text input username-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="password">Password</label>  
-        <div class="col-md-4">
-        <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-         <!-- Button -->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="registerBtn"></label>
-        <div class="col-md-4">
-            <button id="registerBtn" name="registerBtn" type="submit"class="btn btn-primary">Register</button>
-        </div>
-        </div>
-
-          </fieldset>
+        </fieldset>
     </form>
                 </div>
             </div>
@@ -153,7 +149,7 @@
 
     </div>
     <!-- /.container -->
-
+    
     <footer>
         <div class="container">
             <div class="row">
@@ -166,11 +162,20 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-    
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    
-    <!--Custom JavaScript-->
-    <script src="js/main.js"></script>
+
 </body>
 </html>
+
+<?php
+
+if ($_POST){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if($password === 'Admin'){
+        loginAdmin($username,$password);
+    }
+}

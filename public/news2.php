@@ -1,20 +1,21 @@
-<?php
-    session_start();
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Alumni Tracker - Login</title>
+    <title>Alumni Tracker - News</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="css/business-casual.css" rel="stylesheet">
 
@@ -30,10 +31,11 @@
     <![endif]-->
 
 </head>
-<body>
-    <div class="brand">DCIT Alumni Tracker</div>
-       <!--<div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>-->
 
+<body>
+
+    <div class="brand">DCIT Alumni Tracker</div>
+       
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -46,7 +48,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.php">DCIT Alumni Tracker</a>
+                <a class="navbar-brand" href="home.php">DCIT Alumni Tracker</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -58,7 +60,7 @@
                     <li>
                         <a href="about.php">About</a>
                     </li>
-                     <?php
+                    <?php
                         if (!isset($_SESSION['userSession'])){
                         echo"<li><a href='register.php'>Register</a></li>";
                         echo"<li><a href='login.php'>Login</a></li>";
@@ -77,7 +79,7 @@
                 }
                 ?>
   <div class="botton-social-group">
-  <li><a href="https://twitter.com/"><img src="img/tweet.png" alt="Twitter Image" style="width:20px;height:20px;" title="Share on Twitter"></a>
+ <li><a href="https://twitter.com/"><img src="img/tweet.png" alt="Twitter Image" style="width:20px;height:20px;" title="Share on Twitter"></a>
 	  <a href="https://instagram.com/"><img src="img/instagram.png" alt="Instagram Image" style="width:20px;height:20px;" title="Share on Instagram"/></a>
 	  <a href="https://facebook.com/"><img src="img/facebook.png" alt="Facebook Image" style="width:20px;height:20px;" title="Share on FaceBook"/> </a>
 	  <a href="contact.php"><img src="img/whatsapp.png" alt="WhatsApp Image" style="width:22px;height:22px;" title="Join us on Whatsapp"/> </a>
@@ -98,56 +100,22 @@
                 <div class="col-lg-12">
                     <hr>
                     <h2 class="intro-text text-center">Alumni Tracker
-                        <strong>Registration</strong>
+                        <strong>News</strong>
                     </h2>
                     <hr>
                 </div>
                 <div class="col-lg-12 text-center">
-    
-    <form class="form-horizontal" method="POST" action="index.php/register">
-            <fieldset>
-        
-        <!-- Form Name -->
-        <legend>Registration Form</legend>
-
-        <!-- Text input username-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="username">Username</label>  
-        <div class="col-md-4">
-        <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-       <!-- Email input contact email-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="email">Email</label>  
-        <div class="col-md-4">
-        <input id="email" name="email" type="email" placeholder="Email" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-        <!-- Text input username-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="password">Password</label>  
-        <div class="col-md-4">
-        <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-         <!-- Button -->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="registerBtn"></label>
-        <div class="col-md-4">
-            <button id="registerBtn" name="registerBtn" type="submit"class="btn btn-primary">Register</button>
-        </div>
-        </div>
-
-          </fieldset>
-    </form>
+                    <h2>Inaugural Lecture </h2>
                 </div>
+                <div class="col-md-12">
+                    <p>The Open Lectures Committee presents a Professorial Lecture by Professor Patrick Hosein titled, 
+                    Research, Innovation and Education in STEM (Science, Technology, Engineering and Mathematics). </p>
+                   <p>Professorial Inaugural Lectures are hosted for newly-promoted or appointed Professors to inform 
+                    colleagues in the University and the general public, about their research career; and update colleagues 
+                    on their current and future research directions. </p>
+                    <p>The lecture takes place at 6pm.</p>
+            </div>
+                    
             </div>
         </div>
 
@@ -166,11 +134,10 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-    
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    
-    <!--Custom JavaScript-->
-    <script src="js/main.js"></script>
+
 </body>
+
 </html>

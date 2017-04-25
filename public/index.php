@@ -69,4 +69,32 @@ $app->post('/login', function (Request $request, Response $response) {
 
 });
 
+$app->post('/profile', function (Request $request, Response $response) {
+	
+	global $url;
+	$userRecord;
+
+	$post = $request->getParsedBody();
+	
+	$first_name = $post['first_name'];
+	$last_name = $post['last_name'];
+	$sex = $post['sex'];
+	$contact_number = $post['contact_number'];
+	$contact_email = $post['contact_email'];
+	$country_of_birth = $post['country_of_birth'];
+	$year_of_graduation = $post['year_of_graduation'];
+	$degree = $post['degree'];
+	$class_of_degree = $post['class_of_degree'];
+	$occupation = $post['occupation'];
+	$company = $post['company']; 
+	$country_employed = $post['country_employed'];
+	$company_email = $post['company_email'];
+	$interest = $post['interest']; 
+	$social_media = $post['social_media']; 	 
+
+	$userRecord = proInfo($first_name,$last_name,$sex,$contact_number,$contact_email,$country_of_birth,$year_of_graduation,$degree,$class_of_degree,$occupation,$company,$country_employed,$company_email,$interest,$social_media);
+	$response->getBody()->write(json_encode($userRecord));
+
+});
+
 $app->run();

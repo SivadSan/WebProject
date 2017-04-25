@@ -1,3 +1,9 @@
+<?php session_start(); 
+if ($_SESSION['userSession']['usertype'] != "admin"){
+    header("Location: home.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,24 +58,31 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+
                     <li>
-                        <a href="index.php">Home</a>
+                        <a href="home.php">Home</a>
                     </li>
                     <li>
                         <a href="about.php">About</a>
                     </li>
-                    <li>
-                        <a href="register.php">Register</a>
-                    </li>
-                    <li>
-                        <a href="login.php">Login</a>
-                    </li>
+                    <?php
+                        if (!isset($_SESSION['userSession'])){
+                        echo"<li><a href='register.php'>Register</a></li>";
+                        echo"<li><a href='login.php'>Login</a></li>";
+                    }
+                    ?>
                     <li>
                         <a href="news.php">News</a>
                     </li>
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
+                <?php
+                if (isset($_SESSION['userSession']) && ($_SESSION['userSession']) != ""){
+                    echo"<li><a href='profile.php'><span class='glyphicon glyphicon-user'></span>&nbsp;" . $_SESSION['userSession']['username'] . "</a></li>";
+                    echo"<li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span>&nbsp; Logout</a></li>";
+                }
+                ?>
   <div class="botton-social-group">
   <li><a href="https://twitter.com/"><img src="img/tweet.png" alt="Twitter Image" style="width:20px;height:20px;" title="Share on Twitter"></a>
 	  <a href="https://instagram.com/"><img src="img/instagram.png" alt="Instagram Image" style="width:20px;height:20px;" title="Share on Instagram"/></a>
@@ -84,13 +97,11 @@
             <!-- /.navbar-collapse -->
         <!-- /.container -->
     </nav>
-
     <div class="container">
-
-                    <h2 class="brand-before">
-                         <a href='csv.php?download=true'>Download CSV Here!</a>
-                    </h2>
-                </div>
+        <div class="row">
+            <div class="box">
+            <a href='csv.php?download=true'>Download CSV With Member Information</a><br>
+            <a href='list.php'> Profile List </a>
             </div>
         </div>
     </div>
@@ -111,13 +122,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 4000 //changes the speed
-    })
-    </script>
 
 </body>
 

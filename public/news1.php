@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Alumni Tracker - Home</title>
+    <title>Alumni Tracker - News</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +35,7 @@
 <body>
 
     <div class="brand">DCIT Alumni Tracker</div>
-    
+      
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -51,36 +53,43 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+
                     <li>
                         <a href="home.php">Home</a>
                     </li>
                     <li>
                         <a href="about.php">About</a>
                     </li>
-                    <li>
-                        <a href="register.php">Register</a>
-                    </li>
-                    <li>
-                        <a href="login.php">Login</a>
-                    </li>
+                    <?php
+                        if (!isset($_SESSION['userSession'])){
+                        echo"<li><a href='register.php'>Register</a></li>";
+                        echo"<li><a href='login.php'>Login</a></li>";
+                    }
+                    ?>
                     <li>
                         <a href="news.php">News</a>
                     </li>
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
+                <?php
+                if (isset($_SESSION['userSession']) && ($_SESSION['userSession']) != ""){
+                    echo"<li><a href='profile.php'><span class='glyphicon glyphicon-user'></span>&nbsp;" . $_SESSION['userSession']['username'] . "</a></li>";
+                    echo"<li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span>&nbsp; Logout</a></li>";
+                }
+                ?>
   <div class="botton-social-group">
-  <li><a href="https://twitter.com/"><img src="img/tweet.png" alt="Twitter Image" style="width:20px;height:20px;" title="Share on Twitter"></a>
+ <li><a href="https://twitter.com/"><img src="img/tweet.png" alt="Twitter Image" style="width:20px;height:20px;" title="Share on Twitter"></a>
 	  <a href="https://instagram.com/"><img src="img/instagram.png" alt="Instagram Image" style="width:20px;height:20px;" title="Share on Instagram"/></a>
 	  <a href="https://facebook.com/"><img src="img/facebook.png" alt="Facebook Image" style="width:20px;height:20px;" title="Share on FaceBook"/> </a>
 	  <a href="contact.php"><img src="img/whatsapp.png" alt="WhatsApp Image" style="width:22px;height:22px;" title="Join us on Whatsapp"/> </a>
       <a href="contact.php"><img src="img/gmail.png" alt="Gmail Image" style="width:22px;height:22px;" title="Email us"/></a>
 </li>
   </div>
-  </ul>
-</div>
+                </ul>
             </div>
             <!-- /.navbar-collapse -->
+        </div>
         <!-- /.container -->
     </nav>
 
@@ -88,53 +97,24 @@
 
         <div class="row">
             <div class="box">
-                <div class="col-lg-12 text-center">
-                    <div id="carousel-example-generic" class="carousel slide">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators hidden-xs">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        </ol>
-
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="img-responsive img-full" src="img/5.png" alt="" style="width:100%;height:550px;">
-                            </div>
-                            <div class="item">
-                                <img class="img-responsive img-full" src="img/2.png" alt="" style="width:100%;height:550px;">
-                            </div>
-                            <div class="item">                            
-                                <img class="img-responsive img-full" src="img/1.jpg" alt=""style="width:100%;height:550px;">                            
-                            </div>
-                            <div class="item">
-                                <img class="img-responsive img-full" src="img/3.jpg" alt="" style="width:100%;height:550px;"> 
-                            </div>
-                        </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="icon-prev"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="icon-next"></span>
-                        </a>
-                    </div>
-                    <h2 class="brand-before">
-                        <small>Welcome to</small>
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">Alumni Tracker
+                        <strong>News</strong>
                     </h2>
-                    <h1 class="brand-name">Alumni Tracker</h1>
-                    <hr class="tagline-divider">
-                    <h2>
-                        <small>By
-                         <br><img src="img/uwista.png" alt="UWI-Sta Image" style="width:50%;height:50%;"/>
-                            <strong><br> Department of Computing & Information Technology</strong>
-                        </small>
-                    </h2>
+                    <hr>
                 </div>
+                <div class="col-lg-12 text-center">
+                <h2>Employment opportunity </h2>
+                    </div>
+                <div class="col-md-12">
+                    <p>Campus I.T Services is inviting applications for full time or part time web developer</p>
+                    <p>Contact them at 1-868-284-9710 for more informtion</p>
+                    <p>Application Dealine: June 20th 2017</p>
+                    </div>
             </div>
         </div>
+
     </div>
     <!-- /.container -->
 
@@ -153,13 +133,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 4000 //changes the speed
-    })
-    </script>
 
 </body>
 

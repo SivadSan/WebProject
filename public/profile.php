@@ -1,20 +1,16 @@
-<?php
-    session_start();
-?>
+<?php include'lib.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Alumni Tracker - Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="css/business-casual.css" rel="stylesheet">
 
@@ -31,9 +27,9 @@
 
 </head>
 <body>
-    <div class="brand">DCIT Alumni Tracker</div>
-       <!--<div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>-->
 
+    <div class="brand">DCIT Alumni Tracker</div>
+    
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -58,7 +54,7 @@
                     <li>
                         <a href="about.php">About</a>
                     </li>
-                     <?php
+                    <?php
                         if (!isset($_SESSION['userSession'])){
                         echo"<li><a href='register.php'>Register</a></li>";
                         echo"<li><a href='login.php'>Login</a></li>";
@@ -84,10 +80,10 @@
       <a href="contact.php"><img src="img/gmail.png" alt="Gmail Image" style="width:22px;height:22px;" title="Email us"/></a>
 </li>
   </div>
-                </ul>
+  </ul>
+</div>
             </div>
             <!-- /.navbar-collapse -->
-        </div>
         <!-- /.container -->
     </nav>
 
@@ -95,62 +91,14 @@
 
         <div class="row">
             <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Alumni Tracker
-                        <strong>Registration</strong>
-                    </h2>
-                    <hr>
-                </div>
-                <div class="col-lg-12 text-center">
-    
-    <form class="form-horizontal" method="POST" action="index.php/register">
-            <fieldset>
-        
-        <!-- Form Name -->
-        <legend>Registration Form</legend>
-
-        <!-- Text input username-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="username">Username</label>  
-        <div class="col-md-4">
-        <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-       <!-- Email input contact email-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="email">Email</label>  
-        <div class="col-md-4">
-        <input id="email" name="email" type="email" placeholder="Email" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-        <!-- Text input username-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="password">Password</label>  
-        <div class="col-md-4">
-        <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-         <!-- Button -->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="registerBtn"></label>
-        <div class="col-md-4">
-            <button id="registerBtn" name="registerBtn" type="submit"class="btn btn-primary">Register</button>
-        </div>
-        </div>
-
-          </fieldset>
-    </form>
-                </div>
+            <h2>Profile Page For <?php echo $_SESSION['userSession']['username'] ?> </h2>
+                <?php
+                    $email = $_SESSION['userSession']['useremail'];
+                    $student = getProfile($email);
+                    displayProfile($student);
+                ?>
             </div>
         </div>
-
     </div>
     <!-- /.container -->
 
@@ -166,11 +114,11 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-    
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    
-    <!--Custom JavaScript-->
-    <script src="js/main.js"></script>
+
+
+
 </body>
 </html>
