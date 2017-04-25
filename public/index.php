@@ -15,8 +15,8 @@ $configuration = [
 ];
 
 
-$url = "http://localhost:8080/WebProject/public";
-// $url = "https://student-alumni-app.herokuapp.com";
+//$url = "http://localhost:8080/WebProject/public";
+$url = "https://student-alumni-app.herokuapp.com";
 $container = new Container($configuration);
 $app = new App($container);
 

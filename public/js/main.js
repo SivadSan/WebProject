@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    const url = "http://localhost:8080/WebProject/public/";
-    // const url = "https://student-alumni-app.herokuapp.com/";
+    //const url = "http://localhost:8080/WebProject/public/";
+    const url = "https://student-alumni-app.herokuapp.com/";
 
     $("#registerBtn").click(function(){
 
